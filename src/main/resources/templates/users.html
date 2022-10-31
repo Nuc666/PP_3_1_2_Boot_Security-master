@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+</head>
+<body>
+<h1>Users</h1>
+
+<table border="1">
+    <tr>
+        <th>name</th>
+        <th>lastName</th>
+        <th>email</th>
+        <th>delete?</th>
+        <th>edit</th>
+    </tr>
+
+    <tr th:each="lst : ${users}">
+        <td th:utext="${lst.firstName}">name</td>
+        <td th:utext="${lst.lastName}">model</td>
+        <td th:utext="${lst.email}">email</td>
+        <td>
+            <form th:method="DELETE" th:action="@{users/__${lst.id}__}">
+                <input type="submit" value="Delete"/>
+            </form>
+        </td>
+        <td>
+            <form th:method="patch" th:action="@{users/__${lst.id}__}">
+                <label for="firstName">Name</label>
+                <input type="text" name="firstName" id="firstName">
+
+                <label for="lastName">Last name</label>
+                <input type="text" name="lastName" id="lastName">
+
+                <label for="email">E-mail</label>
+                <input type="text" name="email" id="email">
+
+                <input type="submit" value="Edit user">
+            </form>
+        </td>
+    </tr>
+
+</table>
+
+
+
+<form action="/users" method="post" th:object="${user}">
+    <label for="firstName">Name</label>
+    <input type="text" name="firstName" id="firstName">
+
+    <label for="lastName">Last name</label>
+    <input type="text" name="lastName" id="lastName">
+
+    <label for="email">E-mail</label>
+    <input type="text" name="email" id="email">
+
+    <input type="submit" value="Add user">
+</form>
+
+
+
+</body>
+</html>
