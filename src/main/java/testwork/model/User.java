@@ -1,6 +1,7 @@
 package testwork.model;
 
 
+import org.hibernate.FetchMode;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -31,7 +32,7 @@ public class User implements UserDetails {
 
 
 
-   @ManyToMany
+   @ManyToMany(fetch = FetchType.EAGER)
    @JoinTable(
         name = "User_role",
         joinColumns = { @JoinColumn(name = "users_id") },
@@ -116,12 +117,12 @@ public class User implements UserDetails {
 
    @Override
    public String getPassword() {
-      return getPassword();
+      return password;
    }
 
    @Override
    public String getUsername() {
-      return getUsername();
+      return firstName;
    }
 
    @Override
