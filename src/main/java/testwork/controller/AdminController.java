@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @Controller
 @RequestMapping("/admin")
-public class UsersController {
+public class AdminController {
 
     @Autowired
     UserService service;
