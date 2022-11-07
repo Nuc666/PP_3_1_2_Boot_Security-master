@@ -25,7 +25,7 @@ public class User implements UserDetails {
 
    @Column(name = "email")
    private String email;
-
+   @Column(name = "password")
    private String password;
 
    private boolean isActive = true;
@@ -44,10 +44,12 @@ public class User implements UserDetails {
 
    public User() {}
    
-   public User(String firstName, String lastName, String email) {
+   public User(String firstName, String lastName, String email, String password) {
       this.firstName = firstName;
       this.lastName = lastName;
       this.email = email;
+      this.password = password;
+//      this.roleList = roleList;
 
    }
 
@@ -84,6 +86,14 @@ public class User implements UserDetails {
    }
    public List<Role> getRoleList() {
       return roleList;
+   }
+
+   public String roleListToString() {
+      String s = "";
+      for (int i = 0; i < roleList.size(); i++) {
+         s = s + roleList.get(i).getUserRole() +", ";
+      }
+      return s;
    }
    public void setRoleList(List<Role> roleList) {
       this.roleList = roleList;

@@ -2,17 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Users</title>
+    <title>ADMIN</title>
 </head>
 <body>
-<h1>Users</h1>
+<h1>ADMIN</h1>
+<a th:href="@{/logout}">Logout</a>
 
 <table border="1">
     <tr>
         <th>name</th>
         <th>lastName</th>
         <th>email</th>
-        <th>delete?</th>
+        <th>role</th>
+        <th>delete</th>
         <th>edit</th>
     </tr>
 
@@ -20,13 +22,15 @@
         <td th:utext="${lst.firstName}">name</td>
         <td th:utext="${lst.lastName}">model</td>
         <td th:utext="${lst.email}">email</td>
+        <td th:utext="${lst.roleListToString}">role</td>
+
         <td>
-            <form th:method="DELETE" th:action="@{users/__${lst.id}__}">
+            <form th:method="DELETE" th:action="@{admin/__${lst.id}__}">
                 <input type="submit" value="Delete"/>
             </form>
         </td>
         <td>
-            <form th:method="patch" th:action="@{users/__${lst.id}__}">
+            <form th:method="patch" th:action="@{admin/__${lst.id}__}">
                 <label for="firstName">Name</label>
                 <input type="text" name="firstName" id="firstName">
 
@@ -35,6 +39,15 @@
 
                 <label for="email">E-mail</label>
                 <input type="text" name="email" id="email">
+
+                <label for="password">Password</label>
+                <input type="text" name="Password" id="password">
+
+                <label for="roleList">Role</label>
+                <select multiple name="roleList" id="roleList" size="2">
+                    <option  value="1">USER</option>
+                    <option selected value="2">ADMIN</option>
+                </select>
 
                 <input type="submit" value="Edit user">
             </form>
@@ -45,7 +58,7 @@
 
 
 
-<form action="/users" method="post" th:object="${user}">
+<form action="/admin" method="post" th:object="${user}">
     <label for="firstName">Name</label>
     <input type="text" name="firstName" id="firstName">
 
@@ -54,6 +67,15 @@
 
     <label for="email">E-mail</label>
     <input type="text" name="email" id="email">
+
+    <label for="password">Password</label>
+    <input type="text" name="Password" id="password">
+
+    <label for="roleList">Role</label>
+    <select multiple name="roleList" id="roleList" size="2">
+        <option  value="1">USER</option>
+        <option selected value="2">ADMIN</option>
+    </select>
 
     <input type="submit" value="Add user">
 </form>

@@ -41,6 +41,9 @@ public class UserDaoImp implements testwork.dao.UserDao {
         if (!modifiedUser.getEmail().isBlank()) {
             currentUser.setEmail(modifiedUser.getEmail());
         }
+        if (!modifiedUser.getRoleList().isEmpty()) {
+            currentUser.setRoleList(modifiedUser.getRoleList());
+        }
 
         entityManager.persist(currentUser);
     }
