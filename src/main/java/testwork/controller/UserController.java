@@ -23,8 +23,8 @@ public class UserController {
     }
     @GetMapping
     public String getUser(ModelMap model, Principal principal){
-//        User user = userService.getUser(principal.getName())
-//        todo: передать пользователя из БД в Модель
+        User user = userService.getUserByName(principal.getName());
+        model.addAttribute("user", user);
         return "/user";
     }
 }

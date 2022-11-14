@@ -1,7 +1,5 @@
 package testwork.model;
 
-
-import org.hibernate.FetchMode;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 

@@ -58,4 +58,11 @@ public class UserDaoImp implements testwork.dao.UserDao {
         return query.getSingleResult();
     }
 
+    @Override
+    public User getUserByName(String name) {
+        TypedQuery<User> query = entityManager.createQuery("select u from User u where u.firstName =: name", User.class);
+        query.setParameter("name", name);
+        return query.getSingleResult();
+    }
+
 }

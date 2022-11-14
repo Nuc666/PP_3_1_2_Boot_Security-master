@@ -17,11 +17,11 @@
 
     </tr>
 
-    <tr th:each="lst : ${users}">
-        <td th:utext="${lst.firstName}">name</td>
-        <td th:utext="${lst.lastName}">model</td>
-        <td th:utext="${lst.email}">email</td>
-        <td th:utext="${lst.roleListToString}">role</td>
+    <tr >
+        <td th:utext="${user.firstName}">name</td>
+        <td th:utext="${user.lastName}">model</td>
+        <td th:utext="${user.email}">email</td>
+        <td th:utext="${user.roleListToString}">role</td>
 
 
     </tr>
